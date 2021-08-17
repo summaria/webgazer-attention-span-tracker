@@ -39,19 +39,24 @@
   width: 150px;
   border-radius: 50%;
 }
+
+#webgazerGazeDot {
+    background: purple !important
+}
 </style>
+<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 <body> 
     <div class="split left" id="focus-area">
         <div class="centered">
-          <h2>Focus area</h2>
-          <p>Focus on this area to check attention score</p>
+          <h2 class="text-3xl font-semibold text-white">Focus area</h2>
+          <p class="text-purple-300">Focus on this area to check attention score</p>
         </div>
       </div>
       
       <div class="split right">
         <div class="centered">
-          <h2>Distraction area</h2>
-          <p>Result:</p>
+            <h2 class="text-3xl font-semibold text-purple-600">Distraction area</h2>
+            <p class="text-purple-300">Focus on this area to get distracted</p>
           <div id="results">
             
           </div>
@@ -70,7 +75,6 @@
         var left = focusArea.left;
         var right = focusArea.right;
         var bottom = focusArea.bottom;
-        console.log("Bounding coords:", topx, left, right, bottom);
         var focus = 0;
         var unfocus = 0;
 
@@ -81,16 +85,16 @@
             animationEnabled: true,
             axisY: {
                 title: "Attention",
+                gridThickness: 0    
             },
             axisX: {
                 title: "Time"
             },
             title :{
-                text: "Attention span"
             },
             data: [{
                 type: "splineArea",
-		        color: "rgba(54,158,173,.7)",
+		        color: "#9966CC",
                 markerSize: 5,
                 dataPoints: dps
             }]
@@ -127,7 +131,6 @@
         webgazer.showVideoPreview(false);
         const displayCoords = (x,y) => {
             var resultdiv = document.getElementById("results")
-            resultdiv.innerHTML = `<b>(${x} , ${y})</b><br/> Bounding box: ${(topx,bottom,right,left)}`
         }
 
         const displayAttention = (focus, unfocus) => {
