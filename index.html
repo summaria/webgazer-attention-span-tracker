@@ -169,6 +169,7 @@
                 let coords = await getCoords();
                 if(!coords) {
                     unfocus+=4;
+                    return;
                 };
                 let x = coords[0];
                 let y = coords[1];
